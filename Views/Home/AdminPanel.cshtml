@@ -1,0 +1,337 @@
+﻿@model RollsRoyce.Models.CombineViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        h1, h2 {
+            color: #2d2c2a;
+        }
+
+        .table-container {
+            margin: 20px 0;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .table-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background-color: #eb0404;
+            border-color: #eb0404;
+            transition: none; /* Disable transition for hover */
+            outline: none; /* Remove outline */
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: red; /* Change hover color to red */
+            border-color: red; /* Change border color to red */
+            box-shadow: none; /* Remove box-shadow on focus */
+        }
+
+        .modal-header {
+            background-color: #eb0404;
+            color: white;
+        }
+
+        .modal-body {
+            background-color: #ffffff;
+        }
+
+        .modal-footer {
+            background-color: #f1f1f1;
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+        .form-group img {
+            max-width: 100%;
+            margin-top: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .upload-field {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-field input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .file-label {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border: 1px dashed #2d2c2a;
+            border-radius: 5px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .file-label:hover {
+            background-color: #e2e2e2;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Admin Dashboard</h1>
+          <a asp-action="Logout" class="btn btn-danger">Logout</a>
+        <div class="table-container">
+            <h2>Car Listings</h2>
+            <button class="btn btn-primary mb-2" data-toggle="modal" data-target="#addCarModal">Add Car</button>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Model</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="carList">
+                    @foreach (var data in Model.CarForm)
+                    {
+                        <tr>
+                            <td>@data.id</td>
+                            <td>@data.model</td>
+                            <td>@data.name</td>
+                            <td>@data.price</td>
+                            <td><img src="~/upload/@data.img1" alt="Alternate Text" height="100px" /></td>
+                            <td>
+                                <a class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')" asp-action="DeleteData" asp-route-id="@data.id">Delete</a>
+                                <a class="btn btn-success" asp-action="EditCarForm" asp-route-id="@data.id">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <h2>Contact Form Submissions</h2>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="contactFormData">
+                    @foreach(var data in Model.ContactForm) {
+                      <tr>
+                          <td>@data.name</td>
+                        <td>@data.email</td>
+                        <td>@data.msg</td>
+                        <td>
+                                <a class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')" asp-action="DeleteContact" asp-route-id="@data.id">Delete</a>
+                            </td>
+                      </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Add Car Modal -->
+    <div class="modal fade" id="addCarModal" tabindex="-1" aria-labelledby="addCarModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addCarModalLabel">Add New Car</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addCarForm" asp-action="CarForm" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="model">Description</label>
+                            <input type="text" class="form-control" id="model" required name="short_desc" placeholder="max-30 words">
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Model</label>
+                            <input type="text" class="form-control" id="model" required name="model">
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Name</label>
+                            <input type="text" class="form-control" id="model" required name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Price</label>
+                            <input type="text" class="form-control" id="model" required name="price">
+                        </div>
+                        <div class="form-group">
+                            <label for="bodyStyle">Body Style</label>
+                            <input type="text" class="form-control" id="bodyStyle" required name="body_style">
+                        </div>
+                        <div class="form-group">
+                            <label for="seatingCapacity">Seating Capacity</label>
+                            <input type="text" class="form-control" id="seatingCapacity" required name="seating_capacity">
+                        </div>
+                        <h5>Dimensions</h5>
+                        <div class="form-group">
+                            <label for="length">Length (mm)</label>
+                            <input type="text" class="form-control" id="length" required name="length">
+                        </div>
+                        <div class="form-group">
+                            <label for="width">Width (mm)</label>
+                            <input type="text" class="form-control" id="width" required name="width">
+                        </div>
+                        <div class="form-group">
+                            <label for="height">Height (mm)</label>
+                            <input type="text" class="form-control" id="height" required name="height">
+                        </div>
+                        <div class="form-group">
+                            <label for="wheelbase">Wheelbase (mm)</label>
+                            <input type="text" class="form-control" id="wheelbase" required name="wheelbase">
+                        </div>
+                        <div class="form-group">
+                            <label for="curbWeight">Curb Weight (kg)</label>
+                            <input type="text" class="form-control" id="curbWeight" required name="curb_weight">
+                        </div>
+                        <h5>Performance</h5>
+                        <div class="form-group">
+                            <label for="engine">Engine</label>
+                            <input type="text" class="form-control" id="engine" required name="engine">
+                        </div>
+                        <div class="form-group">
+                            <label for="powerOutput">Power Output (hp)</label>
+                            <input type="text" class="form-control" id="powerOutput" required name="power_output">
+                        </div>
+                        <div class="form-group">
+                            <label for="torque">Torque (Nm)</label>
+                            <input type="text" class="form-control" id="torque" required name="torque">
+                        </div>
+                        <div class="form-group">
+                            <label for="transmission">Transmission</label>
+                            <input type="text" class="form-control" id="transmission" required name="transmission">
+                        </div>
+                        <div class="form-group">
+                            <label for="zeroToSixty">0-100 km/h (0-62 mph) (seconds)</label>
+                            <input type="text" class="form-control" id="zeroToSixty" step="0.1" required name="speed_in_second">
+                        </div>
+                        <div class="form-group">
+                            <label for="topSpeed">Top Speed (km/h)</label>
+                            <input type="text" class="form-control" id="topSpeed" required name="top_speed">
+                        </div>
+                        <h5>Fuel Economy</h5>
+                        <div class="form-group">
+                            <label for="fuelEconomy">Combined Fuel Economy (L/100 km)</label>
+                            <input type="text" class="form-control" id="fuelEconomy" step="0.1" required name="combined_fuel">
+                        </div>
+                        <h5>Features</h5>
+                        <div class="form-group">
+                            <label for="suspension">Suspension</label>
+                            <input type="text" class="form-control" id="suspension" required name="suspension">
+                        </div>
+                        <div class="form-group">
+                            <label for="brakes">Brakes</label>
+                            <input type="text" class="form-control" id="brakes" required name="brakes">
+                        </div>
+                        <div class="form-group">
+                            <label for="wheels">Wheels</label>
+                            <input type="text" class="form-control" id="wheels" required name="wheels">
+                        </div>
+                        <div class="form-group">
+                            <label for="infotainment">Infotainment System</label>
+                            <input type="text" class="form-control" id="infotainment" required name="infotainment">
+                        </div>
+                        <h5>Images</h5>
+                        <div class="form-group">
+                            <label for="image1">Image 1</label>
+                            <div class="upload-field">
+                                <label class="file-label">Choose Image</label>
+                                <input type="file" id="image1" accept="image/*" onchange="previewImage(event, 'preview1')" name="img1">
+                                <img id="preview1" alt="Image Preview" style="display:none;">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="image2">Image 2</label>
+                            <div class="upload-field">
+                                <label class="file-label">Choose Image</label>
+                                <input type="file" id="image2" accept="image/*" onchange="previewImage(event, 'preview2')" name="img2">
+                                <img id="preview2" alt="Image Preview" style="display:none;">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="image3">Image 3</label>
+                            <div class="upload-field">
+                                <label class="file-label">Choose Image</label>
+                                <input type="file" id="image3" accept="image/*" onchange="previewImage(event, 'preview3')" name="img3">
+                                <img id="preview3" alt="Image Preview" style="display:none;">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="image4">Image 4</label>
+                            <div class="upload-field">
+                                <label class="file-label">Choose Image</label>
+                                <input type="file" id="image4" accept="image/*" onchange="previewImage(event, 'preview4')" name="img4">
+                                <img id="preview4" alt="Image Preview" style="display:none;">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="image5">Image 5</label>
+                            <div class="upload-field">
+                                <label class="file-label">Choose Image</label>
+                                <input type="file" id="image5" accept="image/*" onchange="previewImage(event, 'preview5')" name="img5">
+                                <img id="preview5" alt="Image Preview" style="display:none;">
+                            </div>
+                        </div>
+                        <h5>Summary</h5>
+                        <div class="form-group">
+                            <label for="summary">Summary/Description</label>
+                            <textarea class="form-control" id="summary" rows="3" required name="summary" placeholder="Max - 220 words"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Car</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

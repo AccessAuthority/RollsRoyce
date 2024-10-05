@@ -1,0 +1,155 @@
+﻿@model RollsRoyce.Models.ContactForm
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- AOS lib  -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font awesome CDN  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Stylesheet File  -->
+    <link rel="stylesheet" href="~/css/style.css">
+    <!-- Google Font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    <title>About Us | RollsRoyce</title>
+</head>
+
+<body>
+    <!-- Navigation  -->
+    <div class="container">
+        <nav>
+            <div class="col1">
+                <img src="images/logo.png" alt="" height="100%">RollsRoyce
+            </div>
+            <div class="col2">
+                <a asp-action="Index">Home</a>
+                <a asp-action="Index">Collections</a>
+                <a asp-action="Index">Testimonials</a>
+                <a href="#">About Us</a>
+            </div>
+            <div class="col3">
+                <button class="btn" id="openModal">Contact Now</button>
+                <!-- Modal  -->
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" id="closeModal">&times;</span>
+                        <h2>Contact Us</h2>
+                        <form asp-action="ContactForm" method="post">
+                            <input type="text" placeholder="Name" required asp-for="name">
+                            <input type="tel" placeholder="Mobile Number" required asp-for="number">
+                            <input type="email" placeholder="Email" required asp-for="email">
+                            <textarea placeholder="Query" rows="4" required asp-for="msg"></textarea>
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="main" data-aos="fade-up">
+            <h1>About Rolls <span>Royce</span></h1>
+            <h3>We’ve been at the forefront of innovation for more than a hundred years, helping to power, protect and connect the modern world</h3>
+            <p>Today, we’re working on a multi-year transformation to unlock our full potential. We’re building on our enduring, distinctive strengths to create a high-performing, competitive, resilient and growing Rolls-Royce. We will continue to design, build and maintain systems that provide mission-critical power to customers.</p>
+            <div class="sec1">
+                <div class="sec1-a">
+                    <img src="https://www.rolls-royce.com/~/media/Images/R/Rolls-Royce/About/about-proposition.jpg?h=940&iar=0&w=764" alt="" srcset="">
+                </div>
+                <div class="sec1-a">
+                    <h2>The Rolls-Royce proposition</h2>
+                    <p>1. Build a high-performing, competitive and resilient business with profitable growth.</p>
+                    <p>2. Grow sustainable free cash flow.</p>
+                    <p>3. Build a strong balance sheet and grow shareholder returns.</p>
+                    <p>Delivering the proposition will make us a stronger partner to our customers as they face future challenges and opportunities. We will unlock our full potential by turning engineering excellence into strong financial performance.</p>
+                    <p>To implement our strategy, we will be disciplined, agile and systematic. We will continue to have a tight focus on priorities, improve commercial discipline and seek efficiency in every step, whilst never compromising on integrity or safety. We will put the business on a stronger financial footing by delivering a sustainable reduction in working capital, higher operating margins and improved operational performance.</p>
+                    <p>Improving profitability will give us options to grow the business and enhance shareholder returns. This performance shift is also crucial to creating more opportunities for our people to be part of an energising, rewarding and world-leading team.</p>
+                </div>
+            </div>
+            <div class="sec2" data-aos="fade-up">
+                <div class="col1">
+                    <img src="https://www.rolls-royce.com/~/media/Images/R/Rolls-Royce/content-images/country-site/about/hear-from-leadership.jpg?h=394&iar=0&w=702" alt="" srcset="">
+                </div>
+                <div class="col1">
+                    <h2>Where we’re going</h2>
+                    <p>
+                        We are building on our strong foundations and advantaged businesses to create a
+                        Rolls-Royce that can unlock its full potential
+                    </p>
+                    <p>Our leadership team made a public announcement about where we’re going and our plans for getting there, at our Capital Markets Day on 28 November 2023. Watch the recording, browse our Virtual Exhibition, and download presentations from the day.</p>
+                    <p>We are setting out the strategic choices that we have made and providing details of the strategic initiatives that will deliver the step change in financial performance we are targeting. Join us to find out how we are going to do it and what a stronger Rolls-Royce will mean for all our stakeholders.</p>
+                </div>
+            </div>
+            <div class="sec2 sec3" data-aos="fade-up">
+                <div class="col1">
+                    <img src="https://www.rolls-royce.com/~/media/Images/R/Rolls-Royce/content-images/country-site/our-strategic-goals.jpg?h=394&iar=0&w=702" alt="" srcset="">
+                </div>
+                <div class="col1">
+                    <h2>Our strategic framework</h2>
+                    <p>Unlocking our full potential to build a stronger Rolls-Royce that will endure and thrive long into the future</p>
+                    <p>We want to continue powering, protecting and connecting the modern world. Designing, building and maintaining systems that provide vital power. To this end, we’re building on our enduring, distinctive strengths to create one competitive, resilient Rolls-Royce. We’re focusing ruthlessly on our key strengths and opportunities to improve our performance – the aim is growth: of our business, of our potential, of our capabilities, and of our options for the future.</p>
+                    <p>We have set out a bold and achievable plan that will take us to the next level: a step change in our performance that will create a high-performing, competitive, resilient and growing business. Our performance in 2023 gives us confidence that we can deliver on our transformation.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Newsletter From  -->
+        <div class="newsl">
+            <div class="news-card" data-aos="fade-up">
+                <h2>Subscribe To Our <span>Newsletter</span></h2>
+                <p>Join our community by subscribing to our newsletter! Be the first to receive exclusive updates, special offers, and insights straight to your inbox. Whether you’re looking for the latest news, tips, or inspiration, we’ve got you covered.</p>
+                <div class="email">
+                    <form asp-action="ContactForm" method="post">
+                        <input type="email" placeholder="Enter Your Email  Address here" asp-for="email" required>
+                        <button type="submit">Subscribe Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Footer    -->
+        <footer>
+        </footer>
+        <div class="f-menu">
+            <div class="f-logo">
+                <img src="images/logo.png" alt=""><h2>RollsRoyce</h2>
+            </div>
+            <div class="div1">
+                <a asp-action="Index">Home</a>
+                <a asp-action="Index">Collections</a>
+                <a asp-action="Index">Testimonials</a>
+                <a href="#">About Us</a>
+                @* <a asp-action="AdminLogin">Admin</a> *@
+            </div>
+            <div class="div2">
+                <a href="https://www.facebook.com/rollsroycemotorcars"> <i class="fa-brands fa-facebook"></i></a>
+                <a href="https://twitter.com/rollsroycecars"> <i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.youtube.com/user/RollsRoyceMotorCars"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://instagram.com/rollsroycecars/?hl=en"> <i class="fa-brands fa-square-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/rolls-royce-motor-cars"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="b-footer">
+            <a href="">Privacy Policy</a>
+            <a href="">Copyright&#169; 2024, All rights reserved by Access Authority | Developed & Designed By Suresh Kumar</a>
+            <a href="">Terms Of Services</a>
+        </div>
+    </div>
+
+    <!-- GSAP CDN  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <script src="~/js/script.js"></script>
+    <!-- AOS  -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

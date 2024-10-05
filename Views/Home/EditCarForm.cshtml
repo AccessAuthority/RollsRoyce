@@ -1,0 +1,129 @@
+﻿@model RollsRoyce.Models.CarForm
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add/Edit Car</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Optional: FontAwesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Edit Car Details</h1>
+        <form id="addCarForm" asp-action="EditCarForm" method="post">
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label for="model">Description</label>
+                <input type="text" class="form-control" id="model" required asp-for="short_desc">
+            </div>
+            <div class="form-group">
+                <label for="model">Model</label>
+                <input type="text" class="form-control" id="model" required asp-for="model">
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" required asp-for="name">
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" class="form-control" id="price" required asp-for="price">
+            </div>
+            <div class="form-group">
+                <label for="bodyStyle">Body Style</label>
+                <input type="text" class="form-control" id="bodyStyle" required asp-for="body_style">
+            </div>
+            <div class="form-group">
+                <label for="seatingCapacity">Seating Capacity</label>
+                <input type="text" class="form-control" id="seatingCapacity" required asp-for="seating_capacity">
+            </div>
+            <h5>Dimensions</h5>
+            <div class="form-group">
+                <label for="length">Length (mm)</label>
+                <input type="text" class="form-control" id="length" required asp-for="length">
+            </div>
+            <div class="form-group">
+                <label for="width">Width (mm)</label>
+                <input type="text" class="form-control" id="width" required asp-for="width">
+            </div>
+            <div class="form-group">
+                <label for="height">Height (mm)</label>
+                <input type="text" class="form-control" id="height" required asp-for="height">
+            </div>
+            <div class="form-group">
+                <label for="wheelbase">Wheelbase (mm)</label>
+                <input type="text" class="form-control" id="wheelbase" required asp-for="wheelbase">
+            </div>
+            <div class="form-group">
+                <label for="curbWeight">Curb Weight (kg)</label>
+                <input type="text" class="form-control" id="curbWeight" required asp-for="curb_weight">
+            </div>
+            <h5>Performance</h5>
+            <div class="form-group">
+                <label for="engine">Engine</label>
+                <input type="text" class="form-control" id="engine" required asp-for="engine">
+            </div>
+            <div class="form-group">
+                <label for="powerOutput">Power Output (hp)</label>
+                <input type="text" class="form-control" id="powerOutput" required asp-for="power_output">
+            </div>
+            <div class="form-group">
+                <label for="torque">Torque (Nm)</label>
+                <input type="text" class="form-control" id="torque" required asp-for="torque">
+            </div>
+            <div class="form-group">
+                <label for="transmission">Transmission</label>
+                <input type="text" class="form-control" id="transmission" required asp-for="transmission">
+            </div>
+            <div class="form-group">
+                <label for="zeroToSixty">0-100 km/h (0-62 mph) (seconds)</label>
+                <input type="text" class="form-control" id="zeroToSixty" step="0.1" required asp-for="speed_in_second">
+            </div>
+            <div class="form-group">
+                <label for="topSpeed">Top Speed (km/h)</label>
+                <input type="text" class="form-control" id="topSpeed" required asp-for="top_speed">
+            </div>
+            <h5>Fuel Economy</h5>
+            <div class="form-group">
+                <label for="fuelEconomy">Combined Fuel Economy (L/100 km)</label>
+                <input type="text" class="form-control" id="fuelEconomy" step="0.1" required asp-for="combined_fuel">
+            </div>
+            <h5>Features</h5>
+            <div class="form-group">
+                <label for="suspension">Suspension</label>
+                <input type="text" class="form-control" id="suspension" required asp-for="suspension">
+            </div>
+            <div class="form-group">
+                <label for="brakes">Brakes</label>
+                <input type="text" class="form-control" id="brakes" required asp-for="brakes">
+            </div>
+            <div class="form-group">
+                <label for="wheels">Wheels</label>
+                <input type="text" class="form-control" id="wheels" required asp-for="wheels">
+            </div>
+            <div class="form-group">
+                <label for="infotainment">Infotainment System</label>
+                <input type="text" class="form-control" id="infotainment" required asp-for="infotainment">
+            </div>
+            <h5>Summary</h5>
+            <div class="form-group">
+                <label for="summary">Summary/Description</label>
+                <textarea class="form-control" id="summary" rows="3" required asp-for="summary"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </div>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

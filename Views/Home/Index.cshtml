@@ -1,0 +1,292 @@
+﻿@model RollsRoyce.Models.CombineViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- AOS lib  -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font awesome CDN  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Stylesheet File  -->
+    <link rel="stylesheet" href="~/css/style.css">
+    <!-- Google Font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    <title>Home | RollsRoyce</title>
+</head>
+
+<body>
+    <!-- Navigation  -->
+    <div class="container">
+        <nav>
+            <div class="col1">
+                <img src="images/logo.png" alt="" height="100%">RollsRoyce
+            </div>
+            <div class="col2">
+                <a href="#">Home</a>
+                <a href="#coll">Collections</a>
+                <a href="#test">Testimonials</a>
+                <a asp-action="About">About Us</a>
+            </div>
+            <div class="col3">
+                <button class="btn" id="openModal">Contact Now</button>
+                <!-- Modal  -->
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" id="closeModal">&times;</span>
+                        <h2>Contact Us</h2>
+                        <form asp-action="ContactForm" method="post">
+                            <input type="text" placeholder="Name" required name="name">
+                            <input type="tel" placeholder="Mobile Number" required name="number">
+                            <input type="email" placeholder="Email" required name="email">
+                            <textarea placeholder="Query" rows="4" required name="msg"></textarea>
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Header -->
+        <header>
+            <img id="car" src="images/R-car.png" alt="" srcset="">
+            <img id="wheel" src="images/wheel.png" alt="" srcset="">
+            <img id="wheel1" src="images/wheel.png" alt="" srcset="">
+            <hr>
+            <h1>
+                "Unmatched luxury, timeless <br> <span>elegance, drive your dreams."</span>
+            </h1>
+            <div class="faded-text">Rolls Royce</div>
+        </header>
+        <div class="header2">
+            <div class="col1">
+                <!-- <img src="images/R-car.png" alt=""> -->
+            </div>
+            <div class="col2">
+                <h2 data-aos="fade-up">Rolls<span>Royce</span></h2>
+                <p data-aos="fade-up">
+                    Step into the world of luxury with this stunning Rolls-Royce, This iconic vehicle boasts a powerful yet
+                    smooth engine, delivering a serene driving experience that is nothing short of extraordinary.
+                </p>
+                <p data-aos="fade-up">Key Features:</p>
+                <li data-aos="fade-up">
+                    Unmistakable silhouette with signature Spirit of Ecstasy makes statements.
+                </li>
+                <li data-aos="fade-up">Sumptuous leather seats and bespoke finishes designed for comfort.</li>
+                <li data-aos="fade-up">Latest infotainment, safety features, and premium sound transform journeys.</li>
+                <li data-aos="fade-up">Unparalleled handling and power for city streets and highways.</li>
+                <li data-aos="fade-up">Meticulous attention to detail for a truly refined experience.</li>
+            </div>
+        </div>
+        <div class="video-background">
+            <video autoplay muted loop>
+                <source src="images/Rolls-Royce Spectre In Motion _ A New Benchmark Of Distinction.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="white-car">
+            <div class="wc-col1">
+                <div class="r2">
+                    <h2 data-aos="fade-right">The Timeless Elegance of Rolls <span>Royce</span> Design</h2>
+                    <p data-aos="fade-right">
+                        Rolls-Royce's exterior design radiates sophistication, highlighted by the iconic Pantheon grille and Spirit
+                        of Ecstasy. Flowing lines, bespoke paint options, and meticulous craftsmanship create a striking presence.
+                        Each vehicle is a harmonious blend of luxury and artistry, embodying the brand's enduring legacy of
+                        excellence and refinement.
+                    </p>
+                    <p data-aos="fade-right">
+                        The attention to detail is unparalleled, from the precision-engineered headlights to the elegantly crafted
+                        taillights, each element designed to enhance the overall aesthetic. The luxurious materials used in the
+                        exterior further elevate its appeal, ensuring that a Rolls-Royce stands out in any setting. This commitment
+                        to perfection makes every model not just a car, but a true work of art.
+                    </p>
+                    <p data-aos="fade-right">
+                        Every model also features an array of customizable elements, allowing owners to express their personal
+                        style. This bespoke approach extends to every aspect of the exterior, ensuring that each vehicle is uniquely
+                        tailored to its owner’s desires.
+                    </p>
+                </div>
+                <div class="r1">
+                    <img id="car2" src="images/1.jpg" alt="" srcset="" data-aos="flip-right">
+                </div>
+                <div class="r1">
+                    <img id="car3" src="images/2.jpg" alt="" srcset="" data-aos="flip-left">
+                </div>
+            </div>
+            <div class="wc-col2">
+                <div class="col1">
+                    <img id="car4" src="images/433541707_422285373653054_3079242062505401506_n.jpg" alt="" data-aos="fade-right">
+                </div>
+                <div class="col1">
+                    <img id="car5" src="images/433403212_421038313939299_8216921913004513852_n.jpg" alt="" srcset=""
+                         data-aos="fade-left">
+                </div>
+                <div class="col2">
+                    <h2 data-aos="flip-up">
+                        The Allure of Rolls <span>Royce </span>Alloy Wheels
+                    </h2>
+                    <p data-aos="flip-up">
+                        Rolls-Royce alloy wheels are more than just functional components; they are a testament to the brand's
+                        dedication to luxury and performance. Crafted with precision, these wheels reflect the same level of
+                        craftsmanship found throughout the entire vehicle.
+                    </p>
+                    <h4 data-aos="flip-up">Elegant Design</h4>
+                    <p data-aos="flip-up">
+                        Each alloy wheel features a striking design that complements the overall aesthetic of the car. The
+                        intricate patterns and finishes—ranging from polished chrome to bespoke colors—enhance the vehicle’s
+                        elegance while providing a bold visual statement. The designs are carefully curated to ensure they align
+                        perfectly with the model’s character, whether it’s the sporty Cullinan or the stately Phantom.
+                    </p>
+                    <h4 data-aos="flip-up">Engineering Excellence</h4>
+                    <p data-aos="flip-up">
+                        Beyond beauty, Rolls-Royce alloy wheels are engineered for performance. They are designed to provide
+                        optimal strength while minimizing weight, which contributes to improved handling and ride quality. The
+                        precision manufacturing process ensures that each wheel is balanced and durable.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- collection  -->
+        <div class="collection" id="coll">
+            <h2 data-aos="zoom-in">Explore Your <span>Dream</span> Cars</h2>
+            <p data-aos="zoom-in">
+                Unleash your passion for luxury and performance as you dive into our exquisite collection of dream cars. <br>
+                Each vehicle in our lineup embodies the perfect fusion of cutting-edge technology, timeless elegance, and
+                unparalleled craftsmanship.
+            </p>
+            <div class="card-container">
+                @foreach (var data in Model.CarForm)
+                {
+                    <a asp-action="Details" asp-route-id="@data.id">
+                        <div class="card" data-aos="fade-up">
+                            <div class="img">
+                                <img src="~/upload/@data.img1" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="title-price">
+                                    <h3>@data.name</h3>
+                                    <span>₹@data.price</span>
+                                </div>
+                                <div class="text">
+                                    @data.short_desc
+                                </div>
+                                <button>Know More</button>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+        <!-- Review  -->
+        <div class="review" id="test" data-aos="fade-up">
+            <h2>Client <span>Testimonials</span></h2>
+            <div class="review-card-container">
+                <div class="crd-frame">
+                    <div class="review-card" data-aos="fade-up">
+                        <div class="review-img">
+                            <img src="https://img.freepik.com/free-psd/handsome-young-man-white-hoodie-grey-background_1142-60451.jpg?t=st=1727891137~exp=1727894737~hmac=0d77b04f7cfc0081b55182b83b2c01e00fde8baa606fa46f94062a78dfe34b71&w=740"
+                                 alt="" srcset="">
+                        </div>
+                        <div class="title-review">
+                            <h3>David Thompson</h3>
+                            <p>
+                                Experiencing a Rolls-Royce is simply unmatched. The lavish interior, meticulous attention to detail,
+                                and seamless performance embody true luxury. It’s not merely transportation; it’s a declaration of style
+                                and prestige. Every ride transforms into an extraordinary event.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="crd-frame">
+                    <div class="review-card" data-aos="fade-up">
+                        <div class="review-img">
+                            <img src="https://img.freepik.com/free-psd/portrait-girl-black-t-shirt-gray-background_1142-61541.jpg?t=st=1727890968~exp=1727894568~hmac=d5ab09f49c8c2865a349bb155e0b4c1639499f7d6209934a31cd394f4967baa4&w=740"
+                                 alt="">
+                        </div>
+                        <div class="title-review">
+                            <h3>Sarah Johnson</h3>
+                            <p>
+                                The Rolls-Royce is the ultimate expression of luxury. Its quiet power and exquisite interior make every
+                                trip a pleasure. Whether cruising city streets or open highways, it delivers an unparalleled sense of
+                                prestige and comfort. A truly remarkable vehicle that stands out in every way!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="crd-frame">
+                    <div class="review-card" data-aos="fade-up">
+                        <div class="review-img">
+                            <img src="https://img.freepik.com/free-psd/portrait-handsome-young-man-white-t-shirt-grey-background_1142-53998.jpg?t=st=1727891082~exp=1727894682~hmac=ca8341bf05292330434fd1d93e2431aebeebf7552b9feaa3cf98675aba67a952&w=740"
+                                 alt="">
+                        </div>
+                        <div class="title-review">
+                            <h3>Michael Anderson</h3>
+                            <p>
+                                The moment you enter a Rolls-Royce, you're enveloped in luxury. Its stunning design, superior crafts,
+                                and whisper-quiet performance redefine what it means to travel in style. More than just a car, it’s an
+                                experience that elevates every journey. and I can’t imagine driving anything else!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Newsletter From  -->
+        <div class="newsl">
+            <div class="news-card" data-aos="fade-up">
+                <h2>Subscribe To Our <span>Newsletter</span></h2>
+                <p>Join our community by subscribing to our newsletter! Be the first to receive exclusive updates, special offers, and insights straight to your inbox. Whether you’re looking for the latest news, tips, or inspiration, we’ve got you covered.</p>
+                <div class="email">
+                    <form asp-action="ContactForm" method="post">
+                    <input type="email" placeholder="Enter Your Email  Address here" name="email" required>
+                    <button type="submit">Subscribe Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Footer    -->
+        <footer>
+        </footer>
+        <div class="f-menu">
+            <div class="f-logo">
+                <img src="images/logo.png" alt=""><h2>RollsRoyce</h2>
+            </div>
+            <div class="div1">
+                <a href="#">Home</a>
+                <a href="#coll">Collections</a>
+                <a href="#test">Testimonials</a>
+                <a asp-action="About">About Us</a>
+                 @* <a asp-action="AdminLogin">Admin</a> *@
+            </div>
+            <div class="div2">
+                <a href="https://www.facebook.com/rollsroycemotorcars"> <i class="fa-brands fa-facebook"></i></a>
+                <a href="https://twitter.com/rollsroycecars"> <i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.youtube.com/user/RollsRoyceMotorCars"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://instagram.com/rollsroycecars/?hl=en"> <i class="fa-brands fa-square-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/rolls-royce-motor-cars"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="b-footer">
+            <a href="">Privacy Policy</a>
+            <a href="">Copyright&#169; 2024, All rights reserved by Access Authority | Developed & Designed By Suresh Kumar</a>
+            <a href="">Terms Of Services</a>
+        </div>
+    </div>
+
+    <!-- GSAP CDN  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <script src="~/js/script.js"></script>
+    <!-- AOS  -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

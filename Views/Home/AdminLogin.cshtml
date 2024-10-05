@@ -1,0 +1,95 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Admin Login</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: auto;
+            margin-top: 100px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2d2c2a;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #eb0404;
+            border-color: #eb0404;
+            transition: none; /* Disable transition for hover */
+            outline: none; /* Remove outline */
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: red; /* Change hover color to red */
+            border-color: red; /* Change border color to red */
+            box-shadow: none; /* Remove box-shadow on focus */
+        }
+
+        .form-group label {
+            color: #2d2c2a;
+        }
+
+        .form-control {
+            border: 1px solid #2d2c2a;
+            border-radius: 5px;
+        }
+
+        .form-control:focus {
+            border-color: #eb0404;
+            box-shadow: none;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #2d2c2a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h1>Admin Login</h1>
+        <p class="text-danger">@TempData["msg"]</p>
+        <form id="loginForm" asp-action="AdminLogin" method="post" >
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" required name="email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" required name="password">
+            </div>
+            <button class="btn btn-primary btn-block">Login</button>
+        </form>
+        <div class="footer">
+            <p>&copy; 2024 Admin Dashboard</p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+﻿@model RollsRoyce.Models.CarForm
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- AOS lib  -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font awesome CDN  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Stylesheet File  -->
+    <link rel="stylesheet" href="~/css/style.css">
+    <!-- Google Font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    <title>Specification | RollsRoyce</title>
+</head>
+
+<body>
+    <!-- Navigation  -->
+    <div class="container">
+        <nav>
+            <div class="col1">
+                <img src="~/images/logo.png" alt="" height="100%">RollsRoyce
+            </div>
+            <div class="col2">
+                <a asp-action="Index">Home</a>
+                <a asp-action="About">About Us</a>
+                <a asp-action="About">Privacy Policy</a>
+                <a asp-action="About">Terms Of Services</a>
+            </div>
+             @* <div class="col3">
+                 <button class="btn" id="openModal">Contact Now</button>
+                 <!-- Modal  -->
+                 <div id="myModal" class="modal">
+                     <div class="modal-content">
+                         <span class="close" id="closeModal">&times;</span>
+                         <h2>Contact Us</h2>
+                         <form asp-action="ContactForm_D" method="post">
+                             <input type="text" placeholder="Name" required name="name">
+                             <input type="tel" placeholder="Mobile Number" required name="number">
+                             <input type="email" placeholder="Email" required name="email">
+                             <textarea placeholder="Query" rows="4" required name="msg"></textarea>
+                             <button type="submit">Submit</button>
+                         </form>
+                     </div>
+                 </div>
+             </div> *@
+        </nav>
+        <div class="spec">
+            <div class="col-1">
+                <div class="d-img">
+                    <img id="img" src="~/upload/@Model.img1" alt="">
+                </div>
+                <div class="change-img">
+                    <img onclick="changeImage(this)" src="~/upload/@Model.img1" alt="">
+                    <img onclick="changeImage(this)" src="~/upload/@Model.img2" alt="">
+                    <img onclick="changeImage(this)" src="~/upload/@Model.img3" alt="">
+                    <img onclick="changeImage(this)" src="~/upload/@Model.img4" alt="">
+                    <img onclick="changeImage(this)" src="~/upload/@Model.img5" alt="">
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="name">
+                    <h2>@Model.name</h2>
+                    <h3>Price ₹@Model.price </h3>
+                </div>
+                <p>
+                   @Model.summary
+                </p>
+                <a class="btn" href="https://www.rolls-roycemotorcars.com/en_US/dealers.html" target="_blanks">Find Dealer</a>
+            </div>
+        </div>
+
+        <!--Car Specification  -->
+        <div class="car-spec">
+            <h1>Car Specification</h1>
+            <hr>
+            <div class="model">
+                <div class="item1"><strong>Model: </strong> @Model.model </div>
+                <div class="item1"><strong>Body Style: </strong> @Model.body_style </div>
+                <div class="item1"><strong>Seating Capacity: </strong> @Model.seating_capacity </div>
+            </div>
+            <hr>
+            <h3>Dimensions</h3>
+            <div class="model">
+                <div class="item1"><strong>Length (mm): </strong> @Model.length </div>
+                <div class="item1"><strong>Width (mm): </strong> @Model.width </div>
+                <div class="item1"><strong>Height (mm): </strong> @Model.height </div>
+                <div class="item1"><strong>Wheelbase (mm): </strong> @Model.wheelbase </div>
+                <div class="item1"><strong>Curb Weight (kg): </strong> @Model.curb_weight </div>
+            </div>
+            <hr>
+            <h3>Performance</h3>
+            <div class="model">
+                <div class="item1"><strong>Engine: </strong> @Model.engine </div>
+                <div class="item1"><strong>Power Output (hp): </strong> @Model.power_output </div>
+                <div class="item1"><strong>Torque (Nm): </strong> @Model.torque </div>
+                <div class="item1"><strong>Transmission: </strong> @Model.transmission </div>
+                <div class="item1"><strong>0-100 km/h (0-62 mph) (seconds): </strong> @Model.speed_in_second </div>
+                <div class="item1"><strong>Top Speed (km/h): </strong> @Model.top_speed </div>
+            </div>
+            <hr>
+            <h3>Other features</h3>
+            <div class="model">
+                <div class="item1"><strong>Combined Fuel Economy (L/100 km): </strong> @Model.combined_fuel </div>
+                <div class="item1"><strong>Suspension: </strong> @Model.suspension </div>
+                <div class="item1"><strong>Brakes: </strong> @Model.brakes </div>
+                <div class="item1"><strong>Wheels: </strong> @Model.wheels</div>
+                <div class="item1"><strong>Infotainment System: </strong> @Model.infotainment</div>
+            </div>
+        </div>
+        <!-- Newsletter From  -->
+        <div class="newsl">
+            <div class="news-card" data-aos="fade-up">
+                <h2>Subscribe To Our <span>Newsletter</span></h2>
+                <p>Join our community by subscribing to our newsletter! Be the first to receive exclusive updates, special offers, and insights straight to your inbox. Whether you’re looking for the latest news, tips, or inspiration, we’ve got you covered.</p>
+                <div class="email">
+                    <form asp-action="ContactForm_D" method="post">
+                        <input type="email" placeholder="Enter Your Email Address here" name="email" required>
+                        <button type="submit">Subscribe Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Footer    -->
+        <footer>
+        </footer>
+        <div class="f-menu">
+            <div class="f-logo">
+                <img src="~/images/logo.png" alt="image"><h2>RollsRoyce</h2>
+            </div>
+            <div class="div1">
+                <a asp-action="Index">Home</a>
+                <a asp-action="About">About Us</a>
+                @* <a asp-action="AdminLogin">Admin</a> *@
+            </div>
+            <div class="div2">
+                <a href="https://www.facebook.com/rollsroycemotorcars"> <i class="fa-brands fa-facebook"></i></a>
+                <a href="https://twitter.com/rollsroycecars"> <i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.youtube.com/user/RollsRoyceMotorCars"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://instagram.com/rollsroycecars/?hl=en"> <i class="fa-brands fa-square-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/rolls-royce-motor-cars"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="b-footer">
+            <a href="">Privacy Policy</a>
+            <a href="">Copyright&#169; 2024, All rights reserved by Access Authority | Developed & Designed By Suresh Kumar</a>
+            <a href="">Terms Of Services</a>
+        </div>
+    </div>
+
+    <!-- GSAP CDN  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <script src="~/js/script.js"></script>
+    <!-- AOS  -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>
